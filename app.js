@@ -48,16 +48,18 @@ app.post('/grades', (request, response) => {
 
 app.post('/register', (request, response) => {
     const name = request.body.name;
-    if(name) {
+    const email = request.body.email;
+    if(name && email) {
         const newStudent = {
             id: students.length,
             name: name, 
+            email: email,
             grades: []
         };
         students.push(newStudent);
         response.send("Success!")
     } else {
-        response.send("No name provided.");
+        response.send("No email or name provided.");
     }
 });
 
